@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+
+require 'haml2erb'
+
+if ARGV.any? {|arg| not File.file? arg}
+  puts <<-USAGE
+Usage:
+  #{$0} <input-file> <output-file>  # overwrites <output-file>
+  #{$0} <input-file>                # output to stdout
+  #{$0}                             # input from stdin, output to stdout
+  USAGE
+end
+
+haml_file, erb_file = *ARGV
+input  = haml_file ? File.open(haml_file)     : $stdin
+output = erb_file  ? File.open(erb_file, 'w') : $stdout
+
+output.write Haml2Erb.convert(input.read)
