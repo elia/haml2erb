@@ -99,7 +99,10 @@ module Haml2Erb
       end
 
       flush_merged_text
-      push_silent "haml_temp = #{text}"
+      push_generated_script erb_tag.inspect
+      concat_merged_text("\n") unless opts[:in_tag] || opts[:nuke_inner_whitespace]
+      
+      # push_silent text
 
       @output_tabs += 1 unless opts[:nuke_inner_whitespace]
       yield
