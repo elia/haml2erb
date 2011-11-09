@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Elia Schito']
   s.email       = ['perlelia@gmail.com']
   s.homepage    = ''
-  s.summary     = %q{Converts Haml templates to Erb templates}
+  s.summary     = %q{Convert Haml templates to Erb!}
   s.description = %q{Converts Haml templates to Erb templates using the official Haml::Engine}
 
   s.rubyforge_project = 'haml2erb'
