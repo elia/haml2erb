@@ -1,3 +1,3 @@
 module Haml2Erb
-  VERSION = '0.3.0.pre'
+  VERSION = '0.3.0.pre.2'
 end
