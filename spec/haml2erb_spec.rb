@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-haml = %{
+haml = %q{
 !!!
 %html(lang="en")
-  %head
+  %head(dynamic="#{attribute}")
     - ciao
     - if 3
       = pippo
@@ -37,9 +37,9 @@ haml = %{
       %section#hammurabi
 }
 
-erb = %{<!DOCTYPE html>
+erb = %q{<!DOCTYPE html>
 <html lang='en'>
-  <head>
+  <head <%= tag_options({"dynamic" => "#{attribute}"}, false) %>>
     <% ciao %>
     <% if 3 %>
       <%= pippo %>
