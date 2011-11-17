@@ -1,6 +1,7 @@
 require 'haml'
 require 'haml2erb/attributes_parser'
 
+
 module Haml2Erb
   class Engine < Haml::Engine
 
@@ -140,6 +141,7 @@ module Haml2Erb
       end
     end
 
+
     def compile_tag
       t = @node.value
 
@@ -184,7 +186,6 @@ module Haml2Erb
         @dont_indent_next_line = dont_indent_next_line
         return if tag_closed
       else
-        # raise attributes_hashes.inspect unless attributes_hashes.empty?
         if attributes_hashes.empty?
           attributes_hashes = ''
         elsif attributes_hashes.size == 1
@@ -199,7 +200,8 @@ module Haml2Erb
         # push_generated_script(
         #   "_hamlout.attributes(#{inspect_obj(t[:attributes])}, #{object_ref}#{attributes_hashes})")
         # NOW: attempt a simplistic parse of the attributes
-        concat_merged_text AttributesParser.new(attributes_hashes).to_html
+        concat_merged_text AttributesParser.hash_to_html(t[:attributes])+
+                           AttributesParser.new(attributes_hashes).to_html
 
         concat_merged_text(
           if t[:self_closing] && xhtml?
